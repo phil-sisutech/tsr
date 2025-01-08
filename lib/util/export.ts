@@ -1,6 +1,6 @@
 import ts from 'typescript';
 
-export type ClassDeclaration = {
+type ClassDeclaration = {
   kind: ts.SyntaxKind.ClassDeclaration;
   name: string;
   change: {
@@ -15,7 +15,7 @@ export type ClassDeclaration = {
   start: number;
 };
 
-export type EnumDeclaration = {
+type EnumDeclaration = {
   kind: ts.SyntaxKind.EnumDeclaration;
   name: string;
   change: {
@@ -29,7 +29,7 @@ export type EnumDeclaration = {
   start: number;
 };
 
-export type ExportAssignment = {
+type ExportAssignment = {
   kind: ts.SyntaxKind.ExportAssignment;
   name: 'default';
   change: {
@@ -43,7 +43,7 @@ export type ExportAssignment = {
   start: number;
 };
 
-export type FunctionDeclaration = {
+type FunctionDeclaration = {
   kind: ts.SyntaxKind.FunctionDeclaration;
   name: string;
   change: {
@@ -58,7 +58,7 @@ export type FunctionDeclaration = {
   start: number;
 };
 
-export type InterfaceDeclaration = {
+type InterfaceDeclaration = {
   kind: ts.SyntaxKind.InterfaceDeclaration;
   name: string;
   change: {
@@ -72,7 +72,7 @@ export type InterfaceDeclaration = {
   start: number;
 };
 
-export type NameExportDeclaration = {
+type NameExportDeclaration = {
   kind: ts.SyntaxKind.ExportDeclaration;
   type: 'named';
   name: string[];
@@ -87,7 +87,7 @@ export type NameExportDeclaration = {
   start: number;
 };
 
-export type NamespaceExportDeclaration = {
+type NamespaceExportDeclaration = {
   kind: ts.SyntaxKind.ExportDeclaration;
   type: 'namespace';
   name: string;
@@ -101,7 +101,7 @@ export type NamespaceExportDeclaration = {
   };
 };
 
-export type TypeAliasDeclaration = {
+type TypeAliasDeclaration = {
   kind: ts.SyntaxKind.TypeAliasDeclaration;
   name: string;
   change: {
@@ -115,7 +115,7 @@ export type TypeAliasDeclaration = {
   start: number;
 };
 
-export type VariableStatement = {
+type VariableStatement = {
   kind: ts.SyntaxKind.VariableStatement;
   name: string[];
   change: {
@@ -129,7 +129,7 @@ export type VariableStatement = {
   start: number;
 };
 
-export type NamedExport =
+type NamedExport =
   | ClassDeclaration
   | EnumDeclaration
   | ExportAssignment
@@ -164,11 +164,11 @@ export type WholeExportDeclarationWithFile = WholeExportDeclarationBase & {
 /**
  * Whole export when the file is not found within the destFiles, i.e. the file is not part of the project
  */
-export type WholeExportDeclarationWithoutFile = WholeExportDeclarationBase & {
+type WholeExportDeclarationWithoutFile = WholeExportDeclarationBase & {
   file: null;
 };
 
-export type WholeExportDeclaration =
+type WholeExportDeclaration =
   | WholeExportDeclarationWithFile
   | WholeExportDeclarationWithoutFile;
 

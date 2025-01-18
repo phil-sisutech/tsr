@@ -4,7 +4,7 @@
 <div align="center">
   <a href="https://badge.fury.io/js/tsr"><img alt="npm version" src="https://badge.fury.io/js/tsr.svg" /></a>
   <a href="https://packagephobia.com/result?p=tsr"><img alt="install size" src="https://packagephobia.com/badge?p=tsr" /></a>
-  <a href="https://github.com/line/tsr/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/line/tsr/actions/workflows/ci.yml/badge.svg?branch=main" /></a>
+  <a href="https://github.com/tsrorg/tsr/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/tsrorg/tsr/actions/workflows/ci.yml/badge.svg?branch=main" /></a>
 </div>
 
 # tsr

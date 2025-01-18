@@ -5,7 +5,7 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/line/tsr"
+    "url": "git+https://github.com/tsrorg/tsr"
   },
   "license": "Apache-2.0",
   "bin": "dist/cli.js",

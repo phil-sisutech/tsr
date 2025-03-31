@@ -670,6 +670,7 @@ export const edit = ({
   options = {},
   projectRoot = '.',
   recursive,
+  filter = 'none',
 }: {
   entrypoints: string[];
   fileService: FileService;
@@ -679,6 +680,7 @@ export const edit = ({
   options?: ts.CompilerOptions;
   projectRoot?: string;
   recursive: boolean;
+  filter: 'export' | 'file' | 'none';
 }) => {
   const dependencyGraph = createDependencyGraph({
     fileService,
@@ -740,6 +742,9 @@ export const edit = ({
             if (entrypoints.includes(file)) {
               return [];
             }
+
+            if (filter === 'export') return [];
+
             output.deleteFile(file);
             fileService.delete(file);
 

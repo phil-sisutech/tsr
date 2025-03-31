@@ -2,7 +2,7 @@
 import { tsr } from './tsr.js';
 import { createRequire } from 'node:module';
 import { arg } from './util/arg.js';
-import process from 'node:process';
+import process, { cwd } from 'node:process';
 import { ArgError, CheckResultError } from './util/error.js';
 
 const options = [
@@ -47,6 +47,20 @@ const options = [
     type: 'boolean',
     description: 'Display version number',
     default: false,
+  },
+  {
+    name: 'path',
+    alias: 'p',
+    type: 'string',
+    description: 'path to check',
+    default: cwd(),
+  },
+  {
+    name: 'filter',
+    alias: '-f',
+    type: 'string',
+    description: 'check specific unused',
+    default: 'none',
   },
 ] as const;
 
@@ -105,6 +119,8 @@ const main = () => {
     configFile: parsed.project || 'tsconfig.json',
     recursive: parsed.recursive,
     includeDts: parsed['include-d-ts'],
+    projectRoot: parsed['path'],
+    filter: parsed['filter'] as 'file' | 'export' | 'none',
   }).catch((error) => {
     if (error instanceof CheckResultError || error instanceof ArgError) {
       process.exitCode = 1;

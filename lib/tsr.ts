@@ -34,6 +34,7 @@ export type Config = {
   system?: ts.System;
   logger?: Logger;
   includeDts?: boolean;
+  filter: 'file' | 'export' | 'none';
 };
 
 // is async for backwards compatibility
@@ -46,6 +47,7 @@ export const tsr = async ({
   system = ts.sys,
   logger = createNodeJsLogger(),
   includeDts = false,
+  filter = 'none',
 }: Config) => {
   const configPath = resolve(projectRoot, configFile);
 
@@ -92,7 +94,7 @@ export const tsr = async ({
     }\n`,
   );
 
-  const output = new CliOutput({ logger, mode, projectRoot });
+  const output = new CliOutput({ logger, mode, projectRoot, filter });
 
   logger.write(
     pc.gray(
@@ -112,6 +114,7 @@ export const tsr = async ({
     options,
     projectRoot,
     recursive,
+    filter,
   });
 
   for (const target of fileNames) {

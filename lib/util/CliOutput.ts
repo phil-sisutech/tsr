@@ -32,19 +32,23 @@ export class CliOutput implements Output {
   #projectRoot: string;
   #logger: Logger;
   #mode: 'check' | 'write';
+  #filter: 'file' | 'export' | 'none';
 
   constructor({
     logger,
     projectRoot,
     mode,
+    filter = 'none',
   }: {
     logger: Logger;
     projectRoot: string;
     mode: 'check' | 'write';
+    filter: 'file' | 'export' | 'none';
   }) {
     this.#logger = logger;
     this.#mode = mode;
     this.#projectRoot = projectRoot;
+    this.#filter = filter;
   }
 
   deleteFile(file: string): void {
